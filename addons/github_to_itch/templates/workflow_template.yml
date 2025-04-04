@@ -71,7 +71,7 @@ jobs:
 	- name: Login To Butler
 	  run: ./butler login
 
-	{UPLOADS_TO_ITCH}
+{UPLOADS_TO_ITCH}
 
  Cleanup:
   needs: [Export, Publish]

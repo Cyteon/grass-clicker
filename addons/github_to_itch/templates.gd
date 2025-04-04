@@ -11,7 +11,7 @@ const ITCH_CHANNEL_MAP = {
 	"Windows Desktop": "win",
 	"Android": "android",
 	"iOS": "ios", # not an official channel of itch
-	"Linux/X11": "linux",
+	"Linux": "linux",
 	"macOS": "mac",
 	"UWP": "uwp" # not an official channel of itch
 }

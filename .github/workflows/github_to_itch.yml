@@ -86,7 +86,16 @@ jobs:
     - name: Login To Butler
       run: ./butler login
 
+    - name: Push Web to Itch
+      run: ./butler push ./build/web cyteon/grass-clicker:web --userversion-file ./VERSION/VERSION.txt
     
+    - name: Push Windows Desktop to Itch
+      run: ./butler push ./build/win cyteon/grass-clicker:win --userversion-file ./VERSION/VERSION.txt
+    
+    - name: Push Linux to Itch
+      run: ./butler push ./build/linux cyteon/grass-clicker:linux --userversion-file ./VERSION/VERSION.txt
+    
+
 
  Cleanup:
   needs: [Export, Publish]
