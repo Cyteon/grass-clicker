@@ -78,6 +78,7 @@ jobs:
     - uses: actions/download-artifact@v4
       with:
         name: build
+        path: build
 
     - name: Print Tree
       run: tree
