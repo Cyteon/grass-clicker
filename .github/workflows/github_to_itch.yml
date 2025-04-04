@@ -70,6 +70,7 @@ jobs:
      path: exports
 
  Publish:
+  needs: Export
   if: ${{ contains(github.ref, 'main') }}
   runs-on: ubuntu-latest
   steps:

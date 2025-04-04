@@ -7,7 +7,7 @@ const workflow_template_path:String = "res://addons/github_to_itch/templates/wor
 const export_template_path:String = "res://addons/github_to_itch/templates/export.yml"
 
 const ITCH_CHANNEL_MAP = {
-	"HTML5": "web",
+	"Web": "web",
 	"Windows Desktop": "win",
 	"Android": "android",
 	"iOS": "ios", # not an official channel of itch
@@ -23,7 +23,7 @@ var export_template:String = """  - name: Export {PLATFORM}
 	
 """.replace("\t", "    ")
 var uploads_template:String = """	- name: Push {PLATFORM} to Itch
-	  run: ./butler push {EXPORT_PATH} {ITCH_USERNAME}/{ITCH_PROJECT_NAME}:{ITCH_CHANNEL} --userversion-file ./VERSION/VERSION.txt
+	  run: ./butler push {EXPORT_PATH} {ITCH_USERNAME}/{ITCH_PROJECT_NAME}:{ITCH_CHANNEL}
 	
 """.replace("\t", "    ")
 
