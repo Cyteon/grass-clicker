@@ -14,6 +14,13 @@ var items = {
 		"multiply_price": 1.15,
 		"persec": 1,
 		"img": "res://assets/fertilizer.png"
+	},
+	"cursor": {
+		"name": "Cursor",
+		"price": 50,
+		"multiply_price": 1.2,
+		"persec": 3,
+		"img": "res://assets/cursor.png"
 	}
 }
 
