@@ -111,7 +111,7 @@ func workflow() -> String:
 	var GODOT_PATH = version_info.version
 	
 	if version_info.status != "stable":
-		GODOT_PATH += "/" + version_info.status
+		GODOT_PATH += "-" + version_info.status
 	
 	return workflow_template.replace("\t", "    ").format({
 		PROJECT_NAME = get_project_name(),
