@@ -28,7 +28,7 @@ jobs:
   needs: CleanArtifacts # wait for artifacts to clean before making a new one
   runs-on: ubuntu-latest
   steps:
-  - uses: actions/checkout@v2
+  - uses: actions/checkout@v4
   
   - name: Download + Authorize Godot
     run: |
@@ -64,7 +64,7 @@ jobs:
      ./godot --headless --path ./ --export-release "Linux" ./build/linux/game.x86_64
     
 
-  - uses: actions/upload-artifact@v2
+  - uses: actions/upload-artifact@v4
     with:
      name: exports
      path: exports
@@ -74,7 +74,7 @@ jobs:
   if: ${{ contains(github.ref, 'main') }}
   runs-on: ubuntu-latest
   steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
    
     - name: Version
       id: tag_version
@@ -87,7 +87,7 @@ jobs:
       run: exit 1
     
     - name: Download Exports
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v4
       with:
        name: exports
        path: exports
@@ -121,7 +121,7 @@ jobs:
        content: ${{ steps.tag_version.outputs.new_version }}
        mode: 0655
     
-    - uses: actions/upload-artifact@v2
+    - uses: actions/upload-artifact@v4
       with:
        name: VERSION
        path: ./VERSION.txt
@@ -131,7 +131,7 @@ jobs:
   if: ${{ contains(github.ref, 'main') }}
   runs-on: ubuntu-latest
   steps:
-    - uses: actions/download-artifact@v2
+    - uses: actions/download-artifact@v4
     
     - name: Download + Authorize Butler
       run: |
