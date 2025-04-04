@@ -32,7 +32,6 @@ jobs:
   
   - name: Download + Authorize Godot
     run: |
-    
        curl -L -o godot.zip https://github.com/godotengine/godot-builds/releases/download/4.4-rc1/Godot_v4.4-rc1_linux.x86_64.zip
        unzip godot.zip
        mv Godot_v4.4-rc1_linux.x86_64 godot
@@ -71,6 +70,7 @@ jobs:
      path: exports
 
  Publish:
+  needs: Release
   if: ${{ contains(github.ref, 'main') }}
   runs-on: ubuntu-latest
   steps:
@@ -85,10 +85,11 @@ jobs:
     
     - name: Login To Butler
       run: ./butler login
+
     
 
  Cleanup:
-  needs: [Export, Publish]
+  needs: [Export, Release, Publish]
   runs-on: ubuntu-latest
   steps:
     - uses: geekyeggo/delete-artifact@v1
