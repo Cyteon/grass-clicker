@@ -55,7 +55,6 @@ jobs:
 	 path: exports
 
  Publish:
-  needs: Release
   if: ${{ contains(github.ref, 'main') }}
   runs-on: ubuntu-latest
   steps:
@@ -74,7 +73,7 @@ jobs:
 	{UPLOADS_TO_ITCH}
 
  Cleanup:
-  needs: [Export, Release, Publish]
+  needs: [Export, Publish]
   runs-on: ubuntu-latest
   steps:
 	- uses: geekyeggo/delete-artifact@v1
