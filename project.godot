@@ -10,15 +10,24 @@ config_version=5
 
 [application]
 
-config/name="GrassTouchingSimulator"
+config/name="Grass Clicker"
 run/main_scene="uid://khus3bk50yi1"
 config/features=PackedStringArray("4.4", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="uid://dqdi7apjn851m"
 
 [display]
 
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/github_to_itch/plugin.cfg")
+
+[github_to_itch]
+
+config/itch_username="cyteon"
+config/itch_project_name="grass-clicker"
 
 [rendering]
 
