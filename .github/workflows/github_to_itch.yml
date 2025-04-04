@@ -7,6 +7,7 @@ on:
  pull_request:
   branches:
   - main
+
 env:
  BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }} # Needs to be added through github
  DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }} # Needs to be added through github
@@ -29,7 +30,7 @@ jobs:
   runs-on: ubuntu-latest
   steps:
   - uses: actions/checkout@v4
-  
+
   - name: Download + Authorize Godot
     run: |
        curl -L -o godot.zip https://github.com/godotengine/godot-builds/releases/download/4.4-rc1/Godot_v4.4-rc1_linux.x86_64.zip
@@ -37,12 +38,12 @@ jobs:
        mv Godot_v4.4-rc1_linux.x86_64 godot
        ls
        chmod +x godot
- 
+
   - name: Download Export Templates
     run: |
      curl -L -o export_templates.zip https://github.com/godotengine/godot-builds/releases/download/4.4-rc1/Godot_v4.4-rc1_export_templates.tpz
      unzip export_templates.zip
-  
+
   - name: Install Export Templates
     run: |
      mkdir -p ~/.local/share/godot/export_templates/4.4.rc1
@@ -52,22 +53,22 @@ jobs:
     run: |
      mkdir -p ./build/web
      ./godot --headless --path ./ --export-release "Web" ./build/web/index.html
-    
+
   - name: Export Windows Desktop
     run: |
      mkdir -p ./build/win
      ./godot --headless --path ./ --export-release "Windows Desktop" ./build/win/game.exe
-    
+
   - name: Export Linux
     run: |
      mkdir -p ./build/linux
      ./godot --headless --path ./ --export-release "Linux" ./build/linux/game.x86_64
-    
+
 
   - uses: actions/upload-artifact@v4
     with:
-     name: exports
-     path: exports
+     name: build
+     path: build
 
  Publish:
   needs: Export
@@ -76,7 +77,7 @@ jobs:
   steps:
     - uses: actions/download-artifact@v4
       with:
-        name: exports
+        name: build
 
     - name: Print Tree
       run: tree
